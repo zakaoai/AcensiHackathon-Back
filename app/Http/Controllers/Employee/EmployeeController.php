@@ -25,10 +25,10 @@ class EmployeeController extends Controller
         $this->apiResponseService = $apiResponseService;
     }
 
-    public function index(): JsonResponse
+    public function allEmployee(): JsonResponse
     {
         try {
-            return $this->apiResponseService->success($this->employeeService->allWith());
+            return $this->apiResponseService->success($this->employeeService->all());
         } catch (Exception $e) {
             return $this->apiResponseService->error($e->getMessage());
         }

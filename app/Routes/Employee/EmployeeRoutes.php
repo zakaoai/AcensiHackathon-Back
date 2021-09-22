@@ -9,7 +9,7 @@ class EmployeeRoutes
     public static function routes(Router $router)
     {
         $router->group(['prefix' => 'employee'], function () use ($router) {
-            $router->get('/', 'Employee\EmployeeController@index');
+            $router->get('/', 'Employee\EmployeeController@allEmployee');
             $router->get('/{id}', 'Employee\EmployeeController@show');
             $router->post('/', 'Employee\EmployeeController@store');
             $router->put('/{id}', 'Employee\EmployeeController@update');
