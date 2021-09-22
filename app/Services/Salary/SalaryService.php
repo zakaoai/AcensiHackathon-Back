@@ -44,6 +44,11 @@ class SalaryService
         return $this->salaryRepository->whereOrWhere([$where], [$orWhere]);
     }
 
+    public function where(array $where)
+    {
+        return $this->salaryRepository->where([$where]);
+    }
+
     public function linkSalary(array $attributes)
     {
         $employee = $this->findOrFail($attributes['employee_id']);

@@ -47,4 +47,9 @@ class SalaryRepository
     {
         return $this->entity->newQuery()->where([[$where]])->orWhere([[$orWhere]])->get();
     }
+
+    public function where(array $where)
+    {
+        return $this->entity->newQuery()->where([[$where]])->get();
+    }
 }
