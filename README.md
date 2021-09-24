@@ -69,3 +69,7 @@ https://www.php-dev-zone.com/blog/install-lumen-in-windows
 -   Initialiser la base de données
 
 `docker-compose exec apiRestLumem php artisan migrate:fresh`
+
+-   Initialiser la base de données avec un premier jeu de données
+
+`docker-compose exec apiRestLumem php artisan migrate:fresh --seed`
