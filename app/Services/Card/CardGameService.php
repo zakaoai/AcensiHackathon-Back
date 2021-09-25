@@ -37,7 +37,14 @@ class CardGameService
 
     public function findByGame(int $id)
     {
-        return 'hello';
-        //return $this->cardGameRepository->findByGame($id);
+
+        $datas = $this->cardGameRepository->findByGame($id);
+        $ordreIdeal = [];
+        foreach ($datas as $value)
+        {
+            $ordreIdeal[] = $value["card_id"];
+        }
+
+        return [...$datas, "ordreIdeal" => $ordreIdeal];
     }
 }

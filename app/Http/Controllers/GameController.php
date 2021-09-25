@@ -26,27 +26,26 @@ class GameController extends Controller
         $this->apiResponseService = $apiResponseService;
     }
 
-    public function sendScore(Request $request)
+    public function getScore(Request $request)
     {
         $gameId = $request->get('game');
+        $dataFromServer = $this->cardGameService->findByGame($gameId);
 
-        return $this->apiResponseService->success(gettype($gameId));//$this->cardGameService->findByGame($gameId));
+        $ordreIdeal = $dataFromServer["ordreIdeal"];
+        $ordreJoueur = $request->get("sprint");
 
-        /*try {
-            return $this->apiResponseService->success($this->cardGameService->findByGame($gameId));
-        } catch (Exception $e) {
-            return $this->apiResponseService->error($e->getMessage());
-        }*/
-    }
-
-    public function getScore()
-    {
-        $ordreJoueur = [4,3,2,1];
-        $ordreIdeal = [1,2,3,4];
         try {
             return $this->apiResponseService->success($this->scoreService->eucDistance($ordreJoueur, $ordreIdeal));
         } catch (Exception $e) {
             return $this->apiResponseService->error($e->getMessage());
         }
     }
+
+    public function calc(Request $request)
+    {
+        $ordreIdeal = $request->get('ideal');
+        $ordreJoueur = $request->get('joueur');
+        return $this->apiResponseService->success($this->scoreService->eucDistance($ordreJoueur, $ordreIdeal));
+    }
+
 }
