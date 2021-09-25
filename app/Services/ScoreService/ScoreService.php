@@ -31,9 +31,10 @@ class ScoreService
         $ordreIdeal;
 
         $dist_euc_joueur = $this->eucDistance($ordreJoueur, $ordreIdeal);
+
         $worseCase = $this->eucDistance($ordreIdeal, array_reverse($ordreIdeal));
         $percent = $dist_euc_joueur/$worseCase*100;
-        return $sprintsPts + (75 - ((75 * $percent) / 100));
+        return max(round($sprintsPts + (75 - ((75 * $percent) / 100)), 0), 0);
     }
 
     function eucDistance(array $a, array $b) {
