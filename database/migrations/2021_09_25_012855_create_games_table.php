@@ -17,6 +17,7 @@ class CreateGamesTable extends Migration
             $table->bigIncrements('id');
             $table->string('libelle', 200);
             $table->string('niveau', 200);
+            $table->integer('nb_sprints', false, true);
         });
     }
 

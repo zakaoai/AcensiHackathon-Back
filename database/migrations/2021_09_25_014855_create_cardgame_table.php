@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCardgamesTable extends Migration
+class CreateCardGameTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,6 +17,7 @@ class CreateCardgamesTable extends Migration
             $table->bigInteger('game_id')->unsigned();
             $table->bigInteger('card_id')->unsigned();
             $table->integer('priority')->unsigned();
+            $table->integer('sprint')->unsigned();
         });
 
         Schema::table('card_game', function($table) {
@@ -33,6 +34,6 @@ class CreateCardgamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cardgames');
+        Schema::dropIfExists('card_game');
     }
 }
