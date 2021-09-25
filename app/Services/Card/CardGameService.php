@@ -9,10 +9,12 @@ use App\Repositories\Card\CardRepository;
 class CardGameService
 {
     private CardGameRepository $cardGameRepository;
+    private CardRepository $cardRepository;
 
-    public function __construct(CardGameRepository $cardGameRepository)
+    public function __construct(CardGameRepository $cardGameRepository, CardRepository $cardRepository)
     {
         $this->cardGameRepository = $cardGameRepository;
+        $this->cardRepository = $cardRepository;
     }
 
     public function findOrFail(string $id)
@@ -44,7 +46,8 @@ class CardGameService
         {
             $ordreIdeal[] = $value["card_id"];
         }
-
-        return [...$datas, "ordreIdeal" => $ordreIdeal];
+        //récupère les cards associées au game
+        $cards =$this->cardRepository->whereIn($ordreIdeal);
+        return [...$cards, "ordreIdeal" => $ordreIdeal];
     }
 }

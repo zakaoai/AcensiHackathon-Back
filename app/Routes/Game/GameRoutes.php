@@ -9,9 +9,8 @@ class GameRoutes
     public static function routes(Router $router)
     {
         $router->group(['prefix' => 'game'], function () use ($router) {
-            //$router->get('/', 'Card\CardController@showAll');
-            $router->get('/', 'GameController@getScore');
-            //$router->post('/', 'Card\CardController@store');
+            $router->get('/getCard/{id}', 'GameController@getCardByGame');
+            $router->get('/score', 'GameController@getScore');
         });
     }
 }

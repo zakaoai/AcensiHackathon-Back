@@ -29,6 +29,11 @@ class CardService
         return $this->cardRepository->allWith();
     }
 
+    public function whereIn(array $attributes)
+    {
+        return $this->cardRepository->whereIn($attributes);
+    }
+
     public function create(array $attributes)
     {
         return $this->cardRepository->create($attributes);
