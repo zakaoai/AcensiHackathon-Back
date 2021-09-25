@@ -13,4 +13,4 @@ $router->get('/', function () use ($router) {
 
 EmployeeRoutes::routes($router);
 CardRoutes::routes($router);
-GameRoutes::routes($router)
+GameRoutes::routes($router);
