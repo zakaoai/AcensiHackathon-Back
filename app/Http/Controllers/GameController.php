@@ -39,12 +39,4 @@ class GameController extends Controller
             return $this->apiResponseService->error($e->getMessage());
         }
     }
-
-    public function calc(Request $request)
-    {
-        $ordreIdeal = $request->get('ideal');
-        $ordreJoueur = $request->get('joueur');
-        return $this->apiResponseService->success($this->scoreService->eucDistance($ordreJoueur, $ordreIdeal));
-    }
-
 }

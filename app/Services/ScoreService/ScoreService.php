@@ -26,10 +26,13 @@ class ScoreService
             $flat_player_choices = [...$flat_player_choices, ...array_values($sprint)];
         }
         $ordreJoueur = $flat_player_choices;
+
         $ordreIdeal = (count($ordreIdeal) === count($flat_player_choices)) ? $ordreIdeal : array_slice($datas["ordreIdeal"],0,-(count($ordreIdeal) - count($flat_player_choices)));
         $ordreIdeal;
-        $percent = $this->eucDistance($ordreJoueur, $ordreIdeal);
-        //TODO Trouver un moyen de determiner de combien est la max eucDistance pour faire un pourcentage à soustraire
+
+        $dist_euc_joueur = $this->eucDistance($ordreJoueur, $ordreIdeal);
+        $worseCase = $this->eucDistance($ordreIdeal, array_reverse($ordreIdeal));
+        $percent = $dist_euc_joueur/$worseCase*100;
         return $sprintsPts + (75 - ((75 * $percent) / 100));
     }
 
