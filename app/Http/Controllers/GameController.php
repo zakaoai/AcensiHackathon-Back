@@ -30,12 +30,11 @@ class GameController extends Controller
     {
         $gameId = $request->get('game');
         $dataFromServer = $this->cardGameService->findByGame($gameId);
-
-        $ordreIdeal = $dataFromServer["ordreIdeal"];
-        $ordreJoueur = $request->get("sprint");
+        $dataFromServer["sprintsPlayer"] = $request->get("sprints");
+        $dataFromServer["game_id"] = $gameId;
 
         try {
-            return $this->apiResponseService->success($this->scoreService->eucDistance($ordreJoueur, $ordreIdeal));
+            return $this->apiResponseService->success($this->scoreService->calcScore($dataFromServer));
         } catch (Exception $e) {
             return $this->apiResponseService->error($e->getMessage());
         }
