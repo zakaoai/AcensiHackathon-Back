@@ -37,31 +37,37 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('games')->insert([
             'libelle' => 'Tutoriel',
-            'niveau' => '0'
+            'niveau' => '0',
+            'nb_sprints' => 1
         ]);
         DB::table('games')->insert([
             'libelle' => 'Niveau 1',
-            'niveau' => '1'
+            'niveau' => '1',
+            'nb_sprints' => 2
         ]);
         DB::table('card_game')->insert([
             'game_id' => 1,
             'card_id' => 1,
-            'priority' => 1
+            'priority' => 1,
+            'sprint' => 1
         ]);
         DB::table('card_game')->insert([
             'game_id' => 1,
             'card_id' => 2,
-            'priority' => 2
+            'priority' => 2,
+            'sprint' => 1
         ]);
         DB::table('card_game')->insert([
             'game_id' => 1,
             'card_id' => 3,
-            'priority' => 3
+            'priority' => 3,
+            'sprint' => 1
         ]);
         DB::table('card_game')->insert([
             'game_id' => 1,
             'card_id' => 4,
-            'priority' => 4
+            'priority' => 4,
+            'sprint' => 1
         ]);
     }
 }

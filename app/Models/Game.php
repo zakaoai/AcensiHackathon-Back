@@ -9,7 +9,7 @@ class Game extends Model
 {
 
     protected $fillable = [
-        "libelle", "niveau"
+        "libelle", "niveau", "nb_sprints"
     ];
 
     public $timestamps = false;
