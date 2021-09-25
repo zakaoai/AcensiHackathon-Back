@@ -10,6 +10,7 @@ class GameRoutes
     {
         $router->group(['prefix' => 'game'], function () use ($router) {
             $router->get('/getCard/{id}', 'GameController@getCardByGame');
+            $router->get('/getSolution/{id}', 'GameController@getSolutionByGame');
             $router->get('/score', 'GameController@getScore');
         });
     }

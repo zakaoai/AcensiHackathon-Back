@@ -43,7 +43,16 @@ class GameController extends Controller
     public function getCardByGame(string $id)
     {
         try {
-            return $this->apiResponseService->success($this->cardGameService->findByGame($id));
+            return $this->apiResponseService->success($this->cardGameService->findCardsByGame($id));
+        } catch (Exception $e) {
+            return $this->apiResponseService->error($e->getMessage());
+        }
+    }
+
+    public function getSolutionByGame(string $id)
+    {
+        try {
+            return $this->apiResponseService->success($this->cardGameService->findSolutionByGame($id));
         } catch (Exception $e) {
             return $this->apiResponseService->error($e->getMessage());
         }

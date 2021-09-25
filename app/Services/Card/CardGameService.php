@@ -37,7 +37,7 @@ class CardGameService
         return $this->cardGameRepository->create($attributes);
     }
 
-    public function findByGame(int $id)
+    public function findSolutionByGame(int $id)
     {
 
         $datas = $this->cardGameRepository->findByGame($id);
@@ -49,5 +49,19 @@ class CardGameService
         //récupère les cards associées au game
         $cards =$this->cardRepository->whereIn($ordreIdeal);
         return [...$cards, "ordreIdeal" => $ordreIdeal];
+    }
+
+    public function findCardsByGame(int $id)
+    {
+
+        $datas = $this->cardGameRepository->findByGame($id);
+        $ordreIdeal = [];
+        foreach ($datas as $value)
+        {
+            $ordreIdeal[] = $value["card_id"];
+        }
+        //récupère les cards associées au game
+        $cards =$this->cardRepository->whereIn($ordreIdeal);
+        return $cards;
     }
 }
