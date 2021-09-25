@@ -48,7 +48,7 @@ class CardGameService
         }
         //récupère les cards associées au game
         $cards =$this->cardRepository->whereIn($ordreIdeal);
-        return [...$cards, "ordreIdeal" => $ordreIdeal];
+        return [...$cards, "ordreIdeal" => $ordreIdeal, ...$datas];
     }
 
     public function findCardsByGame(int $id)
