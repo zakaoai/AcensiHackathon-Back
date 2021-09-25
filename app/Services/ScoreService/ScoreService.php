@@ -5,6 +5,11 @@ namespace App\Services\ScoreService;
 
 class ScoreService
 {
+    function calcScore()
+    {
+
+    }
+
     function eucDistance(array $a, array $b) {
         return
         array_sum(
