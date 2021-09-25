@@ -9,7 +9,7 @@ class CardGame extends Model
 {
 
     protected $fillable = [
-        "game_id", "card_id"
+        "game_id", "card_id", "priority"
     ];
 
     public $timestamps = false;

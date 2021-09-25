@@ -16,6 +16,7 @@ class CreateCardgamesTable extends Migration
         Schema::create('card_game', function (Blueprint $table) {
             $table->bigInteger('game_id')->unsigned();
             $table->bigInteger('card_id')->unsigned();
+            $table->integer('priority')->unsigned();
         });
 
         Schema::table('card_game', function($table) {

@@ -45,19 +45,23 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('card_game')->insert([
             'game_id' => 1,
-            'card_id' => 1
+            'card_id' => 1,
+            'priority' => 1
         ]);
         DB::table('card_game')->insert([
             'game_id' => 1,
-            'card_id' => 2
+            'card_id' => 2,
+            'priority' => 2
         ]);
         DB::table('card_game')->insert([
             'game_id' => 1,
-            'card_id' => 3
+            'card_id' => 3,
+            'priority' => 3
         ]);
         DB::table('card_game')->insert([
             'game_id' => 1,
-            'card_id' => 4
+            'card_id' => 4,
+            'priority' => 4
         ]);
     }
 }
