@@ -7,8 +7,8 @@ use App\Repositories\Game\GameRepository;
 
 class ScoreService
 {
-    const part_sprint = 25;
-    const part_order = 75;
+    const part_sprint = 40;
+    const part_order = 60;
 
 
     function calcScore($datas)
@@ -17,8 +17,8 @@ class ScoreService
         $game = $gr->findOrFail($datas["game_id"]);
         $nb_sprints = $game['nb_sprints'];
         $sprints_player = count($datas["sprintsPlayer"]);
-        $sprintsPts = self::part_sprint - (($sprints_player - $nb_sprints) * 5);
-
+        $sprintsPts = self::part_sprint - (($sprints_player - $nb_sprints) * 10);
+        //return $nb_sprints;
         $flat_player_choices = [];
         $ordreIdeal = $datas["ordreIdeal"];
         foreach ($datas["sprintsPlayer"] as $sprint)
@@ -34,7 +34,7 @@ class ScoreService
 
         $worseCase = $this->eucDistance($ordreIdeal, array_reverse($ordreIdeal));
         $percent = $dist_euc_joueur/$worseCase*100;
-        return max(round($sprintsPts + (75 - ((75 * $percent) / 100)), 0), 0);
+        return max(round($sprintsPts + (60 - ((60 * $percent) / 100)), 0), 0);
     }
 
     function eucDistance(array $a, array $b) {

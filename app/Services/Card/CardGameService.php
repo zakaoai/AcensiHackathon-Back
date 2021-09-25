@@ -64,14 +64,15 @@ class CardGameService
         return $cards;
     }
 
-    public function getSolutionList(int $id){
+    public function findOrdreIdealByGame(int $id)
+    {
         $datas = $this->cardGameRepository->findByGame($id);
         $ordreIdeal = [];
+        //classé par sprints
         foreach ($datas as $value)
         {
             $ordreIdeal[] = $value["card_id"];
         }
-        return array_search($datas, '2');
-
+        return [...$datas, "ordreIdeal"=>$ordreIdeal];
     }
 }

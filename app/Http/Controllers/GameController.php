@@ -28,7 +28,7 @@ class GameController extends Controller
 
     public function getScore($id, Request $request)
     {
-        $dataFromServer = $this->cardGameService->findSolutionByGame($id);
+        $dataFromServer = $this->cardGameService->findOrdreIdealByGame($id);
         //return $this->apiResponseService->success('hello');
         $dataFromServer["sprintsPlayer"] = json_decode($request->get("sprints"),true);
         $dataFromServer["game_id"] = $id;
