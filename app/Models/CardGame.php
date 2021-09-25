@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Card extends Model
+class CardGame extends Model
 {
 
     protected $fillable = [
-        "libelle", "cout", "ordre"
+        "game_id", "card_id"
     ];
 
     public $timestamps = false;
-
-    public function games()
-    {
-        return $this->belongsToMany(Game::class);
-    }
 
 }
