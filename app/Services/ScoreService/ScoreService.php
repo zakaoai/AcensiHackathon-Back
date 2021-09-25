@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Score;
+namespace App\Services\ScoreService;
 
 
 class ScoreService

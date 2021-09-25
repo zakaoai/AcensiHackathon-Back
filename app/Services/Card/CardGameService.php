@@ -37,6 +37,7 @@ class CardGameService
 
     public function findByGame(int $id)
     {
-        return $this->cardGameRepository->findByGame($id);
+        return 'hello';
+        //return $this->cardGameRepository->findByGame($id);
     }
 }
