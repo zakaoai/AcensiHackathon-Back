@@ -31,6 +31,6 @@ class CardGameRepository
 
     public function findByGame(int $id)
     {
-        return $this->entity->newQuery()->where('game_id', $id)->get();
+        return $this->entity->newQuery()->where('game_id', '=', $id)->orderBy('priority')->get();
     }
 }
