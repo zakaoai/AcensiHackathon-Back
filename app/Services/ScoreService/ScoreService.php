@@ -25,20 +25,22 @@ class ScoreService
         {
             $flat_player_choices = [...$flat_player_choices, ...array_values($sprint)];
         }
-
+        if(empty($flat_player_choices)){
+            return 0;
+        }
         $ordreJoueur = $flat_player_choices;
+        $nbBacklog = count($ordreIdeal) - count($ordreJoueur);
 
         $ordreIdeal = (count($ordreIdeal) === count($flat_player_choices)) ? $ordreIdeal : array_slice($datas["ordreIdeal"],0,-(count($ordreIdeal) - count($flat_player_choices)));
-        $ordreIdeal;
 
         $dist_euc_joueur = $this->eucDistance($ordreJoueur, $ordreIdeal);
 
         $worseCase = $this->eucDistance($ordreIdeal, array_reverse($ordreIdeal));
         if($worseCase== 0){
-            return 0;
+            return 0 + $sprintsPts;
         }
         $percent = $dist_euc_joueur/$worseCase*100;
-        return max(round($sprintsPts + (60 - ((60 * $percent) / 100)), 0), 0);
+        return max(round($sprintsPts + (60 - ((60 * $percent) / 100)), 0) - $nbBacklog*10, 0);
     }
 
     function eucDistance(array $a, array $b) {
